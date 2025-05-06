@@ -32,11 +32,15 @@ export default function ExperimentScreen({
   const handleMouseMove = (e) => {
     if (showTarget && startTime) {
       const currentPos = { x: e.clientX, y: e.clientY };
-      const distance = Math.sqrt(
+      const delta = Math.sqrt(
         Math.pow(currentPos.x - lastPosition.x, 2) + 
         Math.pow(currentPos.y - lastPosition.y, 2)
       );
-      setMouseTravel(mouseTravel + distance);
+      setMouseTravel(prev => {
+        const updatedTravel = prev + delta;
+        console.log(`Mouse moved ${delta.toFixed(2)}px → total so far: ${updatedTravel.toFixed(2)}px`);
+        return updatedTravel;
+      });
       setLastPosition(currentPos);
     }
   };
@@ -93,7 +97,8 @@ export default function ExperimentScreen({
     setTimeout(() => {
       setTrialFeedback(false);
       onTrialComplete(trialData);
-    }, 1000); // Show feedback for 1 second
+    }, 700); // Show feedback for 1 second
+    console.log(trialData)
   };
   
   return (
@@ -118,7 +123,7 @@ export default function ExperimentScreen({
         <button 
           ref={centerButtonRef}
           onClick={startTrial}
-          className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
+          className="bg-blue-600 text-white px-6 py-2  hover:bg-blue-700"
           style={{
             position: 'absolute',
             left: `${centerX - 60}px`,
@@ -132,7 +137,7 @@ export default function ExperimentScreen({
       ) : (
         <button 
           onClick={handleTargetClick}
-          className="bg-green-500 rounded-lg hover:bg-green-600"
+          className="bg-green-500  hover:bg-green-600"
           style={{
             position: 'absolute',
             left: `${targetX - targetSize/2}px`,
