@@ -34,7 +34,7 @@ An interactive experiment based on Fitts' Law to collect user interaction data.
 ## Notes
 
 - Data is saved as CSV and dowloaded at the end of the experiment.
-
+- For this exiperiment, the collected data is stored in the assets folder.
 - Designed for local testing; additional setup may be required for deployment
 
 
