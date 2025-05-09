@@ -8,7 +8,7 @@ export default function WelcomeScreen({ onConsent, onDecline }) {
           <h1 className="text-3xl md:text-4xl font-bold text-center">INFORMED CONSENT DOCUMENT</h1>
         </div>
 
-        <div className="p-6 md:p-8 text-gray-900 text-xl md:text-xl leading-relaxed">
+        <div className="p-6 md:p-8 text-gray-900 text-xl md:text-lg leading-relaxed">
           <p className="text-center mb-6">
             Please read the following informed consent document. If you consent to the study, click "I Agree" at the bottom. 
             If you do not consent and would like to cancel your participation in the study, click "I Decline".
